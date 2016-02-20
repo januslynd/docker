@@ -28,4 +28,4 @@ function exported_directories_string {
     echo $str
 }
 
-docker run -v $(pwd):/home/dev/ws $(exported_directories_string) -it com.github.januslynd/jvm
+docker run -p 8080:8080 -p 3449:3449 -v $(pwd):/home/dev/ws $(exported_directories_string) -it com.github.januslynd/jvm
