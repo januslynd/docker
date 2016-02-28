@@ -1,0 +1,26 @@
+elastic:
+  image: elasticsearch:2.2
+  ports:
+    - "9200:9200"
+
+logstash:
+  image: logstash:2.2
+  links:
+    - elastic:elastic
+  volumes:
+    - $PWD/logstash/config/:/config-dir
+    - $PWD/logstash/lib/:/etc/logstash/lib/
+  entrypoint:
+    - logstash
+    - -f
+    - /config-dir/logstash.conf
+
+kibana:
+  image: kibana:4.4
+  ports:
+    - "5601:5601"
+  environment:
+    - ELASTICSEARCH_URL=http://elastic:9200
+  links:
+    - logstash:logstash
+    - elastic:elastic
