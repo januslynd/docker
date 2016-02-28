@@ -54,8 +54,4 @@ RUN bash -c "source /home/dev/.sdkman/bin/sdkman-init.sh"
 #
 WORKDIR /home/dev
 
-# PORTS
-EXPOSE 3449
-EXPOSE 8080
-
 CMD tmux
