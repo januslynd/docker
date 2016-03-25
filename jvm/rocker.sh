@@ -28,4 +28,12 @@ function exported_directories_string {
     echo $str
 }
 
-docker run -p 8080:8080 -p 3449:3449 -v $(pwd):/home/dev/ws $(exported_directories_string) -it com.github.januslynd/jvm
+# Create container with shared X
+docker run -p 9090:9090 \
+       -p 3449:3449 \
+       -v $(pwd):/home/dev/ws \
+       $(exported_directories_string) \
+       -v /etc/localtime:/etc/localtime:ro \
+       -v /tmp/.X11-unix:/tmp/.X11-unix \
+       -e DISPLAY=unix$DISPLAY \
+       -it com.github.januslynd/jvm
