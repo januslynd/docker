@@ -15,13 +15,21 @@ RUN useradd dev -d /home/dev -s /bin/bash && cp -r /etc/skel /home/dev && chown 
 #            |_|
 #
 RUN apt-get update && apt-get install -yq \
-                                      tmux \
-                                      vim \
-				      unzip \
-                                      xz-utils \
-                                      curl \
-                                      rlwrap \
-				      postgresql-client
+    tmux \
+    vim \
+	unzip \
+    xz-utils \
+    curl \
+    rlwrap \
+	postgresql-client
+
+#    _____             _
+#   |_   _| _ __ ___ _(_)___
+#     | || '_/ _` \ V / (_-<
+#     |_||_| \__,_|\_/|_/__/
+#
+RUN apt-get update && apt-get install -yq ruby ruby-dev make && \
+    gem install travis -v 1.8.2 --no-rdoc --no-ri
 
 USER root
 RUN chown dev -R /home/dev/
