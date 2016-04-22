@@ -28,7 +28,7 @@ RUN apt-get update && apt-get install -yq \
 #     | || '_/ _` \ V / (_-<
 #     |_||_| \__,_|\_/|_/__/
 #
-RUN apt-get update && apt-get install -yq ruby ruby-dev make && \
+RUN apt-get update && apt-get install -yq build-essential ruby-dev ruby make && \
     gem install travis -v 1.8.2 --no-rdoc --no-ri
 
 USER root
