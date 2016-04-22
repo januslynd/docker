@@ -15,7 +15,7 @@
 DHOME=/home/dev
 
 # Make sure you give proper permissions to share the following folders
-EXPORTED_DIRECTORIES=".m2 .gradle .lein .scala .grails .sdkman/archives .sdkman/candidates .sbt"
+EXPORTED_DIRECTORIES=".m2 .gradle .lein .scala .grails .sdkman/archives .sdkman/candidates .sbt ides"
 
 # This function exposes previous folders to the docker container
 function exported_directories_string {
@@ -36,4 +36,4 @@ docker run -p 9090:9090 \
        -v /etc/localtime:/etc/localtime:ro \
        -v /tmp/.X11-unix:/tmp/.X11-unix \
        -e DISPLAY=unix$DISPLAY \
-       -it com.github.januslynd/jvm
+       -it mgg/jvm:8
