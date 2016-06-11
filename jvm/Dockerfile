@@ -15,6 +15,7 @@ RUN useradd dev -d /home/dev -s /bin/bash && cp -r /etc/skel /home/dev && chown 
 #            |_|
 #
 RUN apt-get update && apt-get install -yq \
+    openjfx \
     tmux \
     vim \
 	unzip \
