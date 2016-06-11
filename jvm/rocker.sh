@@ -15,7 +15,7 @@
 DHOME=/home/dev
 
 # Make sure you give proper permissions to share the following folders
-EXPORTED_DIRECTORIES=".m2 .gradle .lein .scala .grails .sdkman/archives .sdkman/candidates .sbt ides"
+EXPORTED_DIRECTORIES=".m2 .gradle .lein .scala .groovy .grails .sdkman/archives .sdkman/candidates .sbt ides"
 
 # This function exposes previous folders to the docker container
 function exported_directories_string {
@@ -29,7 +29,7 @@ function exported_directories_string {
 }
 
 # Create container with shared X
-docker run -p 9090:9090 \
+docker run -p $1:$1\
        -p 3449:3449 \
        -v $(pwd):/home/dev/ws \
        $(exported_directories_string) \
