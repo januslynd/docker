@@ -7,7 +7,7 @@
 #
 # 1) Put this in your $PATH
 # 2) Go to your JVM project folder
-# 3) Execute run-env.sh
+# 3) Execute rocker.sh
 # 4) Profit!
 #
 
@@ -36,4 +36,4 @@ docker run -p $1:$1\
        -v /etc/localtime:/etc/localtime:ro \
        -v /tmp/.X11-unix:/tmp/.X11-unix \
        -e DISPLAY=unix$DISPLAY \
-       -it mgg/jvm:8
+       -it mgg/jvm
