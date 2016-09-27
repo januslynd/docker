@@ -9,6 +9,7 @@
 # Create container with shared X
 docker run -v /etc/localtime:/etc/localtime:ro \
        -v /tmp/.X11-unix:/tmp/.X11-unix \
+       -v ~/.arduino-projects:/arduino/projects/ \
        --device /dev/ttyACM0 \
        -e DISPLAY=unix$DISPLAY \
        -it mgg/arduino
