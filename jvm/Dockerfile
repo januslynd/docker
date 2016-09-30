@@ -41,16 +41,20 @@ RUN chown dev -R /home/dev/
 #    \__/  \_/ |_|  |_| |____\__,_|_||_\__, |\_,_\__,_\__, \___/__/
 #                                      |___/          |___/
 #
-# Most of JVM languages can be found using sdk-man.org but some of
-# them like Clojure can't
 #
-ENV LEIN_ROOT 1
-RUN curl https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein -o /usr/local/bin/lein && chmod +x /usr/local/bin/lein && lein upgrade
-
-# SDK-MAN
+# SDK-MAN == :)
 USER dev
 RUN curl -s get.sdkman.io | bash
 RUN bash -c "source /home/dev/.sdkman/bin/sdkman-init.sh"
+
+#    ___            _     ___              _                        _
+#   | __| _ ___ _ _| |_  |   \ _____ _____| |___ _ __ _ __  ___ _ _| |_
+#   | _| '_/ _ \ ' \  _| | |) / -_) V / -_) / _ \ '_ \ '  \/ -_) ' \  _|
+#   |_||_| \___/_||_\__| |___/\___|\_/\___|_\___/ .__/_|_|_\___|_||_\__|
+#                                               |_|
+
+RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.0/install.sh | bash
+RUN bash -c "source /home/dev/.nvm/nvm.sh"
 
 #    ___           _      _                      _
 #   | _ ) ___  ___| |_ __| |_ _ _ __ _ _ __ _ __(_)_ _  __ _
