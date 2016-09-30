@@ -22,7 +22,8 @@ RUN apt-get update && apt-get install -yq \
     xz-utils \
     curl \
     rlwrap \
-	postgresql-client
+	postgresql-client \
+    haskell-platform
 
 #    _____             _
 #   |_   _| _ __ ___ _(_)___
