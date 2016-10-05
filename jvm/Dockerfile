@@ -25,6 +25,8 @@ RUN apt-get update && apt-get install -yq \
 	postgresql-client \
     haskell-platform
 
+RUN cabal update
+
 #    _____             _
 #   |_   _| _ __ ___ _(_)___
 #     | || '_/ _` \ V / (_-<
