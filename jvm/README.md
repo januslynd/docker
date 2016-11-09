@@ -7,9 +7,9 @@ projects.
 
 From `jvm` folder:
 
-'''shell
+```shell
 ./bin/build.sh
-'''
+```
 
 ## Running
 
@@ -21,9 +21,9 @@ From `jvm` folder:
 
 Usage example:
 
-'''shell
+```shell
 user@machine/myprojectfolder>rocker.sh 8080:8080
-'''
+```
 
 This will open a new tmux session in your container exposing
 container's `8080` port.
