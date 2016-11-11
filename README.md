@@ -6,8 +6,9 @@ Repository  of Docker images
 
 So far these are the images contained in this repository:
 
-- android-dev (WIP)
-- arduino: Arduino development
-- elk: Elastic Seach + Kibana
-- jvm: Image to develop JVM related projects
-- tesseract: Tesseract OCR engine
+- `android-dev`: Android development environment
+- `arduino`: Arduino development
+- `elk`: Elastic Seach + Kibana
+- `jvm`: Image to develop JVM based projects
+- `groovy-dev`: Apache Groovy development environment
+- `tesseract`: Tesseract OCR engine
