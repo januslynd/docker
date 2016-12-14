@@ -37,7 +37,9 @@ RUN echo 'dev:devpassword123' | chpasswd
 #     | || '_/ _` \ V / (_-<
 #     |_||_| \__,_|\_/|_/__/
 #
-RUN apt-get update && apt-get install -yq build-essential ruby-dev ruby make && \
+RUN apt-get update && \
+    apt-get install zip && \
+    apt-get install -yq build-essential ruby-dev ruby make && \
     gem install travis -v 1.8.2 --no-rdoc --no-ri && \
     apt-get clean && \
     rm -fr /var/lib/apt/lists/* /tmp/* /var/tmp/*
