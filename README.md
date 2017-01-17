@@ -12,3 +12,4 @@ So far these are the images contained in this repository:
 - `jvm`: Image to develop JVM based projects
 - `groovy-dev`: Apache Groovy development environment
 - `tesseract`: Tesseract OCR engine
+- `nvm-dev`: NVM development container
