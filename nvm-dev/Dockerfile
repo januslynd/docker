@@ -14,9 +14,13 @@ RUN apt-get update && apt-get install -yq \
 	unzip \
     xz-utils \
     curl \
+    nginx-extras \
     rlwrap && \
     apt-get clean && \
     rm -fr /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+COPY files/nginx_default_site /etc/nginx/sites-enabled/default
+
 #    _   _
 #   | | | |___ ___ _ _
 #   | |_| (_-</ -_) '_|
