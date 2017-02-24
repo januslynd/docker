@@ -13,3 +13,4 @@ So far these are the images contained in this repository:
 - `groovy-dev`: Apache Groovy development environment
 - `tesseract`: Tesseract OCR engine
 - `nvm-dev`: NVM development container
+- `spagobi`: Full Spago Business Intelligence (SpagoBI) full suite
