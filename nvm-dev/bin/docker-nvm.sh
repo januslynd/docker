@@ -7,7 +7,7 @@ NGINX_CONTENT=$1
 # This function exposes previous folders to the docker container
 function exported_directories_string {
     # Make sure you give proper permissions to share the following folders
-    EXPORTED_DIRECTORIES=".nvm .intellij .ssh"
+    EXPORTED_DIRECTORIES=".intellij .ssh"
     str=""
 
     for d in $EXPORTED_DIRECTORIES; do

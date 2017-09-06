@@ -52,7 +52,6 @@ WORKDIR /home/dev
 # |_|\_| \_/ |_|  |_|
 #
 
-RUN mkdir -p /home/dev/.nvm
-RUN chown -R dev:dev /home/dev/.nvm
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
+RUN ls -la /home/dev/.nvm
 ENTRYPOINT ["/entrypoint.sh"]
