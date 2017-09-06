@@ -34,6 +34,7 @@ function exported_directories_string {
 
 # Create container with shared X
 docker run -it \
+       --rm \
        -p $1:$1\
        -p 3449:3449 \
        -v $(pwd):/home/dev/ws \
