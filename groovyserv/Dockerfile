@@ -42,7 +42,8 @@ RUN curl \
     --output /tmp/groovyserv.zip && \
     mkdir -p /opt/groovyserv/auth && \
     unzip /tmp/groovyserv.zip -d /opt/groovyserv/ && \
-    rm /tmp/groovyserv.zip
+    rm /tmp/groovyserv.zip && \
+    /opt/groovyserv/groovyserv-$GROOVYSERV_VERSION/bin/setup.sh
 
 ## CLEANING UP
 RUN apt-get remove -y curl && \
