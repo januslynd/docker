@@ -1,3 +1,3 @@
 #!/bin/sh
 
-docker build -t com.github.mariogarcia/groovyserv .
+docker build --rm -t com.github.mariogarcia/groovyserv .
