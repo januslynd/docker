@@ -1,49 +1,52 @@
-FROM base/archlinux
+FROM openjdk:8-jdk-slim
 
-# INSTALL DEPENDENCIES
-RUN pacman -Syyu --noconfirm && \
-    pacman --noconfirm -Syy \
-    firefox \
+## INSTALL DEPENDENCIES
+RUN apt-get update -yq && \
+    apt-get install -yq \
+    --no-install-recommends \
+    firefox-esr \
     unzip \
-    go \
-    jdk8-openjdk \
-    xorg-server-xvfb
+    curl \
+    xvfb
 
-# VERSIONS
+## VERSIONS
 ENV GECKO_DRIVER=0.19.0
 ENV GROOVY_VERSION=2.4.12
 ENV GROOVYSERV_VERSION=1.1.0
 
-# GECKO_DRIVER
+## GECKO_DRIVER
 ENV GECKO_PATH /opt/geckodriver/
 RUN curl \
     -L https://github.com/mozilla/geckodriver/releases/download/v${GECKO_DRIVER}/geckodriver-v${GECKO_DRIVER}-linux64.tar.gz \
-    --output /tmp/geckodriver-${GECKO_DRIVER}.tar.gz
+    --output /tmp/geckodriver-${GECKO_DRIVER}.tar.gz && \
+    mkdir -p $GECKO_PATH && \
+    tar xf /tmp/geckodriver-${GECKO_DRIVER}.tar.gz -C $GECKO_PATH && \
+    rm /tmp/geckodriver-${GECKO_DRIVER}.tar.gz
 
-RUN mkdir -p $GECKO_PATH
-RUN tar xf /tmp/geckodriver-${GECKO_DRIVER}.tar.gz -C $GECKO_PATH
-
-# GROOVY
+## GROOVY
 RUN curl \
     -L  https://dl.bintray.com/groovy/maven/apache-groovy-binary-$GROOVY_VERSION.zip\
-    --output /tmp/apache-groovy-binary-$GROOVY_VERSION.zip
+    --output /tmp/apache-groovy-binary-$GROOVY_VERSION.zip && \
+    mkdir -p /opt/groovy/ && \
+    unzip /tmp/apache-groovy-binary-$GROOVY_VERSION.zip -d /opt/groovy/ && \
+    rm /tmp/apache-groovy-binary-$GROOVY_VERSION.zip
 
-RUN mkdir -p /opt/groovy/
-RUN unzip /tmp/apache-groovy-binary-$GROOVY_VERSION.zip -d /opt/groovy/
-
-# GROOVYSERV
+## GROOVYSERV
 RUN curl \
-    -L https://bitbucket.org/kobo/groovyserv-mirror/downloads/groovyserv-$GROOVYSERV_VERSION-src.zip \
-    --output /tmp/groovyserv.zip
+    -L https://bitbucket.org/kobo/groovyserv-mirror/downloads/groovyserv-$GROOVYSERV_VERSION-bin.zip \
+    --output /tmp/groovyserv.zip && \
+    mkdir -p /opt/groovyserv/ && \
+    mkdir -p /opt/groovyserv/auth && \
+    unzip /tmp/groovyserv.zip -d /opt/groovyserv/ && \
+    rm /tmp/groovyserv.zip
 
-RUN mkdir -p /opt/groovyserv/
-RUN mkdir -p /opt/groovyserv/auth
-RUN unzip /tmp/groovyserv.zip -d /tmp/
-RUN cd /tmp/groovyserv-$GROOVYSERV_VERSION/ && ./gradlew clean distLocalBin
-RUN unzip /tmp/groovyserv-$GROOVYSERV_VERSION/build/distributions/groovyserv-$GROOVYSERV_VERSION-bin-local.zip \
-    -d /opt/groovyserv/
+## CLEANING UP
+RUN apt-get remove -y curl && \
+    apt-get autoremove && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
-# GENERAL ENVIRONMENT
+## GENERAL ENVIRONMENT
 ENV DISPLAY=:10
 ENV GROOVY_HOME=/opt/groovy/groovy-$GROOVY_VERSION
 ENV GROOVY_SERVER=/opt/groovyserv/groovyserv-$GROOVYSERV_VERSION
@@ -53,5 +56,5 @@ ENV JAVA_OPTS="-Djava.security.egd=file:/dev/./urandom -Dwebdriver.gecko.driver=
 COPY files/entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 
-# ENTRYPOINT
+## ENTRYPOINT
 ENTRYPOINT ["/entrypoint.sh"]
