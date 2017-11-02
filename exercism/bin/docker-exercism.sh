@@ -35,10 +35,9 @@ function exported_directories_string {
 # Create container with shared X
 docker run -it \
        -p $1:$1\
-       -p 3449:3449 \
        -v $(pwd):/home/dev/exercism \
        $(exported_directories_string) \
        -v /etc/localtime:/etc/localtime:ro \
        -v /tmp/.X11-unix:/tmp/.X11-unix \
        -e DISPLAY=unix$DISPLAY \
-       mgg/exercism
+       mgg/exercism:2.4.1

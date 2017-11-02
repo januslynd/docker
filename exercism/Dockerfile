@@ -1,4 +1,4 @@
-FROM openjdk:8
+FROM openjdk:8-jdk-slim
 
 #    ___                        _             _
 #   |   \ ___ _ __  ___ _ _  __| |___ _ _  __(_)___ ___
@@ -15,8 +15,7 @@ RUN apt-get update && apt-get install -yq \
 	unzip \
     xz-utils \
     curl \
-    rlwrap \
-	postgresql-client && \
+    rlwrap && \
     apt-get clean && \
     rm -fr /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -60,7 +59,7 @@ USER dev
 
 # EXERCISM == :)
 RUN cd && \
-    curl -LOk https://github.com/exercism/cli/releases/download/v2.4.0/exercism-linux-64bit.tgz && \
+    curl -LOk https://github.com/exercism/cli/releases/download/v2.4.1/exercism-linux-64bit.tgz && \
     tar xf exercism-linux-64bit.tgz && \
     mkdir -p /home/dev/bin && \
     mv /home/dev/exercism /home/dev/bin
