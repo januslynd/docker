@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM debian:jessie-slim
 
 #    ___                        _             _
 #   |   \ ___ _ __  ___ _ _  __| |___ _ _  __(_)___ ___
