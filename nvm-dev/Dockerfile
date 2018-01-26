@@ -13,6 +13,14 @@ RUN apt-get update && apt-get install -yq \
     vim \
 	unzip \
     xz-utils \
+    python \
+    pkg-config \
+    bzip2 \
+    unzip \
+    libcairo2-dev \
+    libjpeg-dev \
+    libgif-dev \
+    build-essential \
     curl \
     nginx-extras \
     rlwrap && \
