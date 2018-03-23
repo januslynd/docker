@@ -1,4 +1,4 @@
-FROM openjdk:8-slim
+FROM openjdk:9-jdk
 
 #    ___                        _             _
 #   |   \ ___ _ __  ___ _ _  __| |___ _ _  __(_)___ ___
